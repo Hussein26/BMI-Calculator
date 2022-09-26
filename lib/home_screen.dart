@@ -25,12 +25,15 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('BMI Calculator'),
         backgroundColor: Colors.black38,
       ),
-      body: SingleChildScrollView(
+
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+
         child: Column(
+
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(
-              height: 15,
-            ),
+
             Row(
               children: [
                 Expanded(
@@ -47,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             borderRadius: BorderRadius.circular(10),
                             color:
                                 _colorM ? Colors.blueAccent : Colors.black38),
-                        height: 195,
+                        height: MediaQuery.of(context).size.height*.22,
                         child: Column(
                           children: [
                             Icon(
@@ -79,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Padding(
                       padding: EdgeInsets.only(right: 10),
                       child: Container(
-                        height: 195,
+                        height: MediaQuery.of(context).size.height*.22,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: _colorM ? Colors.black38 : Colors.pink,
@@ -104,11 +107,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               ],
             ),
-            SizedBox(
-              height: 20,
-            ),
+
             Container(
-              height: 185,
+              height: MediaQuery.of(context).size.height*.25,
               width: 370,
               decoration: BoxDecoration(
                 color: Colors.black38,
@@ -166,9 +167,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+
+
             Row(children: [
               Expanded(
                 child: Padding(
@@ -177,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.black38),
-                    height: 200,
+                    height: MediaQuery.of(context).size.height*.22,
                     child: Column(
                       children: [
                         SizedBox(
@@ -197,40 +197,39 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontSize: 55,
                               fontWeight: FontWeight.bold),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 40),
-                          child: Row(
-                            children: [
-                              FloatingActionButton(
-                                onPressed: weight == 50
-                                    ? null
-                                    : () {
-                                        setState(() {
-                                          weight--;
-                                        });
-                                      },
-                                heroTag: 'Weight-',
-                                mini: true,
-                                child: const Icon(
-                                  Icons.remove,
-                                ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            FloatingActionButton(
+                              onPressed: weight == 50
+                                  ? null
+                                  : () {
+                                      setState(() {
+                                        weight--;
+                                      });
+                                    },
+                              heroTag: 'Weight-',
+                              mini: true,
+                              child: const Icon(
+                                Icons.remove,
                               ),
-                              FloatingActionButton(
-                                onPressed: weight == 220
-                                    ? null
-                                    : () {
-                                        setState(() {
-                                          weight++;
-                                        });
-                                      },
-                                heroTag: 'Weight+',
-                                mini: true,
-                                child: Icon(
-                                  Icons.add,
-                                ),
+                            ),
+                            FloatingActionButton(
+                              onPressed: weight == 220
+                                  ? null
+                                  : () {
+                                      setState(() {
+                                        weight++;
+                                      });
+                                    },
+                              heroTag: 'Weight+',
+                              mini: true,
+                              child: Icon(
+                                Icons.add,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         )
                       ],
                     ),
@@ -247,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.black38),
-                    height: 200,
+                    height: MediaQuery.of(context).size.height*.22,
                     child: Column(
                       children: [
                         SizedBox(
@@ -267,36 +266,34 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontSize: 55,
                               fontWeight: FontWeight.bold),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 40),
-                          child: Row(
-                            children: [
-                              FloatingActionButton(
-                                onPressed:age == 16?null:(){
-                                  setState(() {
-                                    age--;
-                                  });
-                                },
-                                heroTag: 'age-',
-                                mini: true,
-                                child: const Icon(
-                                  Icons.remove,
-                                ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            FloatingActionButton(
+                              onPressed:age == 16?null:(){
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                              heroTag: 'age-',
+                              mini: true,
+                              child: const Icon(
+                                Icons.remove,
                               ),
-                              FloatingActionButton(
-                                onPressed:age == 99?null:(){
-                                  setState(() {
-                                    age++;
-                                  });
-                                },
-                                heroTag: 'age+',
-                                mini: true,
-                                child: Icon(
-                                  Icons.add,
-                                ),
+                            ),
+                            FloatingActionButton(
+                              onPressed:age == 99?null:(){
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                              heroTag: 'age+',
+                              mini: true,
+                              child: Icon(
+                                Icons.add,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         )
                       ],
                     ),
@@ -306,7 +303,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ]),
             SizedBox(
               width: double.infinity,
-              height: 50,
+              height: MediaQuery.of(context).size.height*.09,
               child: ElevatedButton(
                 onPressed: () {
                   double result = weight / pow(tall / 100, 2);
